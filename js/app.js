@@ -1,7 +1,3 @@
-// import {clients} from './people.js'
-
-// clients.forEach((element)=>console.log(element))
-
 let users = [];
 
 const userName = document.querySelector('#userName');
@@ -25,6 +21,11 @@ const objUser = {
 eventListeners();
 
 function eventListeners() {
+
+    document.addEventListener('DOMContentLoaded', () => {
+        printUsers();
+    });
+
     userName.addEventListener('input', setDataObject);
     email.addEventListener('input', setDataObject);
     phone.addEventListener('input', setDataObject);
