@@ -28,7 +28,7 @@ function eventListeners() {
     phone.addEventListener('input', setDataObject);
     password.addEventListener('input', setDataObject);
 
-    form.addEventListener('submit', newUser);
+    form.addEventListener('submit', validateForm);
 }
 
 function setDataObject(e) {
@@ -36,6 +36,32 @@ function setDataObject(e) {
     console.log(objUser);
 }
 
-function newUser() {
-    console.log('hola');
+function validateForm(e) {
+    e.preventDefault();
+
+    const {userName,email,phone,password}=objUser;
+
+    if(userName==='' || email==='' || phone==='' || password===''){
+        showAlert('All fields are required','error');
+        return;
+    }
+}
+
+function showAlert(message, type) {
+    const divAlert = document.createElement('div');
+    divAlert.classList.add('text-center', 'alert', 'd-block', 'col-12');
+
+    if (type==='error'){
+        divAlert.classList.add('alert-danger')
+    }else{
+        divAlert.classList.add('alert-success');
+    }
+
+    divAlert.textContent=message;
+
+    document.querySelector('#content').insertBefore(divAlert, document.querySelector('.add-user'));
+
+    setTimeout(() => {
+        divMessage.remove();
+    }, 5000);
 }
