@@ -50,6 +50,8 @@ function changeMode() {
         btnChange.textContent = 'Light mode';
         body.classList.add('dark', 'back-dark');
         container.classList.add('dark');
+        btnChange.classList.add('btn-light');
+        btnChange.classList.remove('btn-dark');
         return;
     }
 
@@ -57,6 +59,8 @@ function changeMode() {
     btnChange.textContent = 'Dark mode';
     body.classList.remove('dark', 'back-dark');
     container.classList.remove('dark');
+    btnChange.classList.remove('btn-light');
+    btnChange.classList.add('btn-dark');
 }
 
 function setDataObject(e) {
