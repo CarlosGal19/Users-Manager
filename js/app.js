@@ -9,7 +9,11 @@ const form = document.querySelector('#new-user');
 
 const containerUsers = document.querySelector('#users');
 
+const btnChange = document.querySelector('.change');
+
 let modifying = false;
+
+let darkMode = false;
 
 const objUser = {
     userName: '',
@@ -31,7 +35,27 @@ function eventListeners() {
     phone.addEventListener('input', setDataObject);
     password.addEventListener('input', setDataObject);
 
+    btnChange.addEventListener('click', changeMode);
+
     form.addEventListener('submit', validateForm);
+}
+
+function changeMode() {
+
+    const body = document.querySelector('body');
+    const container = document.querySelector('.container');
+
+    if (!darkMode) {
+        darkMode = true;
+        btnChange.textContent = 'Light mode';
+        body.classList.add('dark', 'back-dark');
+        container.classList.add('dark');
+    } else {
+        darkMode = false;
+        btnChange.textContent = 'Dark mode';
+        body.classList.remove('dark', 'back-dark');
+        container.classList.remove('dark');
+    }
 }
 
 function setDataObject(e) {

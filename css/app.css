@@ -1,49 +1,70 @@
 html {
-    min-height: 100%;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background-image: linear-gradient(-225deg, #A445B2 0%, #D41872 52%, #FF0066 100%);
-    min-height: 100%;
-    padding-bottom: 5rem;
-  }
-  .titulo {
-    font-weight: bold;
-    font-size: 3rem;
-    text-transform: uppercase;
-    color: white;
-  }
-  .container {
-      background-color: white;
-  }
-  header {
-    margin-top: 3rem;
-  }
-  header h1 {
-    color: white;
-  }
-  .lista-users .users {
-    border-bottom: 1px solid #e1e1e1;
-    padding: 2rem;
-    padding-bottom: 3rem;
+  min-height: 100%;
+}
 
-  }
-   .lista-users .users:last-of-type {
-    border-bottom: 0;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  min-height: 100%;
+  padding-bottom: 5rem;
+}
 
-  .lista-users .users p {
-    margin:0;
-  }
-  .lista-users .users button {
-    margin-top: 1rem!important;
-  }
-  .lista-users .users span {
-    font-weight: bold;
-  }
+.back {
+  background-image: linear-gradient(-225deg, #A445B2 0%, #D41872 52%, #FF0066 100%);
+}
 
-  svg {
-    width: 21px;
-  }
+.back-dark {
+  background-image: linear-gradient(-225deg, #343eee 0%, #2e0c94 52%, #1b152d 100%);
+}
+
+.titulo {
+  font-weight: bold;
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: white;
+}
+
+.container {
+  background-color: white;
+}
+
+header {
+  margin-top: 3rem;
+}
+
+header h1 {
+  color: white;
+}
+
+.lista-users .users {
+  border-bottom: 1px solid #e1e1e1;
+  padding: 2rem;
+  padding-bottom: 3rem;
+
+}
+
+.lista-users .users:last-of-type {
+  border-bottom: 0;
+}
+
+.lista-users .users p {
+  margin: 0;
+}
+
+.lista-users .users button {
+  margin-top: 1rem !important;
+}
+
+.lista-users .users span {
+  font-weight: bold;
+}
+
+svg {
+  width: 21px;
+}
+
+.dark {
+  background-color: #1b152d;
+  color: white;
+}

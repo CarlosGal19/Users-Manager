@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,29 +9,35 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
-<body>
+
+<body class="back">
     <h2 class="text-center my-5 titulo">User Manager</h2>
     <div class="container mt-5 p-5">
-        <div id="content" class="row">
+        <div class="text-center">
+            <button class="btn btn-info change">Dark Mode</button>
+        </div>
+        <div id="content" class="row py-5">
             <div class="col-md-6 add-user">
                 <form id="new-user">
                     <legend class="mb-4">User data</legend>
                     <div class="form-group row">
                         <label class="col-sm-4 col-lg-4 col-form-label">User name</label>
                         <div class="col-sm-8 col-lg-8">
-                            <input type="text" id="userName" name="userName" class="form-control" placeholder="User name">
+                            <input type="text" id="userName" name="userName" class="form-control"
+                                placeholder="User name">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-lg-4 col-form-label">Email</label>
                         <div class="col-sm-8 col-lg-8">
-                            <input type="email" id="email" name="email" class="form-control"  placeholder="Email">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-lg-4 col-form-label">Phone number:</label>
                         <div class="col-sm-8 col-lg-8">
-                            <input type="tel" id="phone" name="phone" class="form-control"  placeholder="Número de Teléfono">
+                            <input type="tel" id="phone" name="phone" class="form-control"
+                                placeholder="Número de Teléfono">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -41,7 +48,7 @@
                     </div>
 
                     <div class="form-group">
-                            <button type="submit" class="btn btn-success w-100 d-block">Crear Cita</button>
+                        <button type="submit" class="btn btn-success w-100 d-block">Crear Cita</button>
                     </div>
                 </form>
             </div>
@@ -55,4 +62,5 @@
     <script src="js/app.js" type="module"></script>
 
 </body>
+
 </html>
