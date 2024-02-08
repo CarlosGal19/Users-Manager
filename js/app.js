@@ -40,26 +40,26 @@ function setDataObject(e) {
 function validateForm(e) {
     e.preventDefault();
 
-    const {userName,email,phone,password}=objUser;
+    const { userName, email, phone, password } = objUser;
 
-    if(userName==='' || email==='' || phone==='' || password===''){
-        showAlert('All fields are required','error');
+    if (userName === '' || email === '' || phone === '' || password === '') {
+        showAlert('All fields are required', 'error');
         return;
     }
 
     if (modifying) {
 
-        editUser({...objUser});
+        editUser({ ...objUser });
 
         showAlert('User modified successfully');
 
-        form.querySelector('button[type="submit"]').textContent='Add user';
+        form.querySelector('button[type="submit"]').textContent = 'Add user';
 
-        modifying=false;
-    }else{
-        objUser.id=Date.now();
+        modifying = false;
+    } else {
+        objUser.id = Date.now();
 
-        users.push({...objUser});
+        users.push({ ...objUser });
 
         showAlert('User added successfully');
     }
@@ -71,22 +71,22 @@ function validateForm(e) {
 }
 
 function editUser(object) {
-    const {id}=object;
+    const { id } = object;
 
-    users=users.map(user=>user.id===id?object:user);
+    users = users.map(user => user.id === id ? object : user);
 }
 
 function showAlert(message, type) {
     const divAlert = document.createElement('div');
     divAlert.classList.add('text-center', 'alert', 'd-block', 'col-12');
 
-    if (type==='error'){
+    if (type === 'error') {
         divAlert.classList.add('alert-danger')
-    }else{
+    } else {
         divAlert.classList.add('alert-success');
     }
 
-    divAlert.textContent=message;
+    divAlert.textContent = message;
 
     document.querySelector('#content').insertBefore(divAlert, document.querySelector('.add-user'));
 
@@ -96,10 +96,10 @@ function showAlert(message, type) {
 }
 
 function resetObject() {
-    objUser.userName='';
-    objUser.email='';
-    objUser.phone='';
-    objUser.password='';
+    objUser.userName = '';
+    objUser.email = '';
+    objUser.phone = '';
+    objUser.password = '';
 }
 
 function printUsers() {
@@ -107,42 +107,42 @@ function printUsers() {
     cleanHTML(containerUsers);
 
     users.forEach(user => {
-        const {userName,email,phone,password,id}=user;
+        const { userName, email, phone, password, id } = user;
 
-        const divUser=document.createElement('div');
+        const divUser = document.createElement('div');
         divUser.classList.add('cita', 'p-3');
-        divUser.dataset.id=id;
+        divUser.dataset.id = id;
 
-        const userNameParagraph=document.createElement('h2');
+        const userNameParagraph = document.createElement('h2');
         userNameParagraph.classList.add('card-title', 'font-weight-bolder');
-        userNameParagraph.textContent=userName;
+        userNameParagraph.textContent = userName;
 
-        const emailParagraph=document.createElement('p');
-        emailParagraph.innerHTML=`
+        const emailParagraph = document.createElement('p');
+        emailParagraph.innerHTML = `
             <span class="font-weight-bolder">Email: </span>${email}
         `;
 
-        const phoneParagraph=document.createElement('p');
-        phoneParagraph.innerHTML=`
+        const phoneParagraph = document.createElement('p');
+        phoneParagraph.innerHTML = `
             <span class="font-weight-bolder">Phone number: </span>${phone}
         `;
 
-        const passwordParagraph=document.createElement('p');
-        passwordParagraph.innerHTML=`
+        const passwordParagraph = document.createElement('p');
+        passwordParagraph.innerHTML = `
             <span class="font-weight-bolder">Password: </span>${password}
         `;
 
-        const btnDelete=document.createElement('button');
+        const btnDelete = document.createElement('button');
         btnDelete.classList.add('btn', 'btn-danger', 'mr-2');
-        btnDelete.innerHTML='Remove <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"> <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /> </svg>'
+        btnDelete.innerHTML = 'Remove <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"> <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /> </svg>'
 
-        btnDelete.onclick=()=>deleteUser(id);
+        btnDelete.onclick = () => deleteUser(id);
 
-        const btnEdit=document.createElement('button');
+        const btnEdit = document.createElement('button');
         btnEdit.classList.add('btn', 'btn-info');
-        btnEdit.innerHTML='Edit <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"> <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z" /></svg>'
+        btnEdit.innerHTML = 'Edit <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"> <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z" /></svg>'
 
-        btnEdit.onclick=()=>getData(user);
+        btnEdit.onclick = () => getData(user);
 
         divUser.appendChild(userNameParagraph);
         divUser.appendChild(emailParagraph);
@@ -157,7 +157,7 @@ function printUsers() {
 
 function deleteUser(id) {
 
-    users = users.filter(user=>user.id!==id);
+    users = users.filter(user => user.id !== id);
 
     showAlert('User deleted successfully');
 
@@ -166,24 +166,24 @@ function deleteUser(id) {
 
 function getData(user) {
 
-    userName.value=user.userName;
-    email.value=user.email;
-    phone.value=user.phone;
-    password.value=user.password;
+    userName.value = user.userName;
+    email.value = user.email;
+    phone.value = user.phone;
+    password.value = user.password;
 
-    objUser.userName=user.userName;
-    objUser.email=user.email;
-    objUser.phone=user.phone;
-    objUser.password=user.password;
-    objUser.id=user.id;
+    objUser.userName = user.userName;
+    objUser.email = user.email;
+    objUser.phone = user.phone;
+    objUser.password = user.password;
+    objUser.id = user.id;
 
-    form.querySelector('button[type="submit"]').textContent='Update data';
+    form.querySelector('button[type="submit"]').textContent = 'Update data';
 
-    modifying=true;
+    modifying = true;
 }
 
 function cleanHTML(spaceToClean) {
     while (spaceToClean.firstChild) {
-      spaceToClean.removeChild(spaceToClean.firstChild);
+        spaceToClean.removeChild(spaceToClean.firstChild);
     }
-  }
+}
