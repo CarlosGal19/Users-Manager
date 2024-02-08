@@ -13,7 +13,7 @@ const form = document.querySelector('#new-user');
 
 const containerUsers = document.querySelector('#users');
 
-let modifying;
+let modifying = false;
 
 const objUser = {
     userName: '',
@@ -47,16 +47,33 @@ function validateForm(e) {
         return;
     }
 
-    objUser.id=Date.now();
+    if (modifying) {
 
-    users.push({...objUser});
+        editUser({...objUser});
 
-    showAlert('User added successfully');
+        showAlert('User modified successfully');
+
+        form.querySelector('button[type="submit"]').textContent='Add user';
+
+        modifying=false;
+    }else{
+        objUser.id=Date.now();
+
+        users.push({...objUser});
+
+        showAlert('User added successfully');
+    }
 
     resetObject();
     form.reset();
 
     printUsers();
+}
+
+function editUser(object) {
+    const {id}=object;
+
+    users=users.map(user=>user.id===id?object:user);
 }
 
 function showAlert(message, type) {
@@ -125,7 +142,7 @@ function printUsers() {
         btnEdit.classList.add('btn', 'btn-info');
         btnEdit.innerHTML='Edit <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"> <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z" /></svg>'
 
-        btnEdit.onclick=()=>editUser(user);
+        btnEdit.onclick=()=>getData(user);
 
         divUser.appendChild(userNameParagraph);
         divUser.appendChild(emailParagraph);
@@ -147,8 +164,22 @@ function deleteUser(id) {
     printUsers();
 }
 
-function editUser(user) {
+function getData(user) {
 
+    userName.value=user.userName;
+    email.value=user.email;
+    phone.value=user.phone;
+    password.value=user.password;
+
+    objUser.userName=user.userName;
+    objUser.email=user.email;
+    objUser.phone=user.phone;
+    objUser.password=user.password;
+    objUser.id=user.id;
+
+    form.querySelector('button[type="submit"]').textContent='Update data';
+
+    modifying=true;
 }
 
 function cleanHTML(spaceToClean) {
