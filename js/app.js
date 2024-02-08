@@ -2,6 +2,8 @@
 
 // clients.forEach((element)=>console.log(element))
 
+const users = [];
+
 const userName = document.querySelector('#userName');
 const email = document.querySelector('#email');
 const phone = document.querySelector('#phone');
@@ -45,6 +47,17 @@ function validateForm(e) {
         showAlert('All fields are required','error');
         return;
     }
+
+    objUser.id=Date.now();
+
+    users.push({...objUser});
+
+    showAlert('User added successfully');
+
+    resetObject();
+
+    form.reset();
+
 }
 
 function showAlert(message, type) {
@@ -62,6 +75,13 @@ function showAlert(message, type) {
     document.querySelector('#content').insertBefore(divAlert, document.querySelector('.add-user'));
 
     setTimeout(() => {
-        divMessage.remove();
+        divAlert.remove();
     }, 5000);
+}
+
+function resetObject() {
+    objUser.userName='';
+    objUser.email='';
+    objUser.phone='';
+    objUser.password='';
 }
