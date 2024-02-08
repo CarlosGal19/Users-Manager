@@ -24,27 +24,24 @@ html {
   header h1 {
     color: white;
   }
-  .lista-citas .cita {
+  .lista-users .users {
     border-bottom: 1px solid #e1e1e1;
     padding: 2rem;
     padding-bottom: 3rem;
 
   }
-  .lista-citas .cita:last-of-type {
+   .lista-users .users:last-of-type {
     border-bottom: 0;
   }
 
-  .lista-citas .cita p {
+  .lista-users .users p {
     margin:0;
   }
-  .lista-citas .cita button {
+  .lista-users .users button {
     margin-top: 1rem!important;
   }
-  .lista-citas .cita span {
+  .lista-users .users span {
     font-weight: bold;
-  }
-  textarea {
-      height: 200px!important;
   }
 
   svg {

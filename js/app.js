@@ -111,7 +111,7 @@ function printUsers() {
         const { userName, email, phone, password, id } = user;
 
         const divUser = document.createElement('div');
-        divUser.classList.add('cita', 'p-3');
+        divUser.classList.add('users', 'p-3');
         divUser.dataset.id = id;
 
         const userNameParagraph = document.createElement('h2');
