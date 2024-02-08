@@ -2,7 +2,7 @@
 
 // clients.forEach((element)=>console.log(element))
 
-const users = [];
+let users = [];
 
 const userName = document.querySelector('#userName');
 const email = document.querySelector('#email');
@@ -35,7 +35,6 @@ function eventListeners() {
 
 function setDataObject(e) {
     objUser[e.target.name] = e.target.value;
-    console.log(objUser);
 }
 
 function validateForm(e) {
@@ -141,6 +140,11 @@ function printUsers() {
 
 function deleteUser(id) {
 
+    users = users.filter(user=>user.id!==id);
+
+    showAlert('User deleted successfully');
+
+    printUsers();
 }
 
 function editUser(user) {
