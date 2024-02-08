@@ -55,9 +55,9 @@ function validateForm(e) {
     showAlert('User added successfully');
 
     resetObject();
-
     form.reset();
 
+    printUsers();
 }
 
 function showAlert(message, type) {
@@ -85,3 +85,48 @@ function resetObject() {
     objUser.phone='';
     objUser.password='';
 }
+
+function printUsers() {
+
+    cleanHTML(containerUsers);
+
+    users.forEach(user => {
+        const {userName,email,phone,password,id}=user;
+
+        const divUser=document.createElement('div');
+        divUser.classList.add('cita', 'p-3');
+        divUser.dataset.id=id;
+
+        const userNameParagraph=document.createElement('h2');
+        userNameParagraph.classList.add('card-title', 'font-weight-bolder');
+        userNameParagraph.textContent=userName;
+
+        const emailParagraph=document.createElement('p');
+        emailParagraph.innerHTML=`
+            <span class="font-weight-bolder">Email: </span>${email}
+        `;
+
+        const phoneParagraph=document.createElement('p');
+        phoneParagraph.innerHTML=`
+            <span class="font-weight-bolder">Phone number: </span>${phone}
+        `;
+
+        const passwordParagraph=document.createElement('p');
+        passwordParagraph.innerHTML=`
+            <span class="font-weight-bolder">Password: </span>${password}
+        `;
+
+        divUser.appendChild(userNameParagraph);
+        divUser.appendChild(emailParagraph);
+        divUser.appendChild(phoneParagraph);
+        divUser.appendChild(passwordParagraph);
+
+        containerUsers.appendChild(divUser);
+    });
+}
+
+function cleanHTML(spaceToClean) {
+    while (spaceToClean.firstChild) {
+      spaceToClean.removeChild(spaceToClean.firstChild);
+    }
+  }
